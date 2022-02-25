@@ -1,4 +1,4 @@
-// Autor: PazitoPazos
+// Author: PazitoPazos
 // Date: 25/02/2022
 
 // --- Tutorial ---
