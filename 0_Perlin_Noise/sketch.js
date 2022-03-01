@@ -13,40 +13,38 @@
 // var xoff = 0;
 // var xoff2 = 10000;
 // var yoff = 0;
-var inc = 0.01;
-var start = 0;
+var inc = 0.1;
 
 function setup() {
   createCanvas(400, 400);
+  pixelDensity(1);
 }
 
 function draw() {
-  background(50);
 
-  // --- 1D Graph comparing random() vs noise() ---
-  stroke(255);
-  noFill();
-  beginShape();
-  var xoff = start;
+  // --- 2D Noise ---
+  var yoff = 0;
+
+  loadPixels();
+
   for (var x = 0; x < width; x++) {
-    stroke(255);
-    var n = map(noise(xoff), 0, 1, -50, 50); // Swap -50, 50 for 0, height ->
-    var s = map(sin(xoff), -1, 1, 0, height); // -> To do a wave with a lot of noise
-    var y = s + n; // Sinusoidal wave with noise
-    
-    // var y = random(height);
-    // var y = noise(xoff)*height; // Similar to a terrain generator in 1D
-    // var y = height / 2 + sin(xoff) * height / 2; // Sinusoidal wave
+    var xoff = 0;
+    for (var y = 0; y < height; y++) {
+      var index = (x + y * width) * 4;
+      var r = noise(xoff, yoff) * 255;
+      pixels[index+0] = r;
+      pixels[index+1] = r;
+      pixels[index+2] = r;
+      pixels[index+3] = 255;
 
-    vertex(x, y);
-    
-    xoff += inc;
+      xoff += inc;
+    }
+    yoff += inc;
   }
-  endShape();
 
-  start += inc;
+  updatePixels();
 
-  // noLoop(); // Stop looping
+  noLoop(); // Stop looping
 
   // --- Prints a moving circle ---
   // -- Random --
@@ -65,5 +63,30 @@ function draw() {
 
   // -- Circle --
   // ellipse(x, y, 24, 24);
+
+    // --- 1D Graph comparing random() vs noise() ---
+    // stroke(255);
+    // noFill();
+    // beginShape();
+    // var xoff = start;
+    // for (var x = 0; x < width; x++) {
+    //   stroke(255);
+    //   var n = map(noise(xoff), 0, 1, -50, 50); // Swap -50, 50 for 0, height ->
+    //   var s = map(sin(xoff), -1, 1, 0, height); // -> To do a wave with a lot of noise
+    //   var y = s + n; // Sinusoidal wave with noise
+      
+      // var y = random(height);
+      // var y = noise(xoff)*height; // Similar to a terrain generator in 1D
+      // var y = height / 2 + sin(xoff) * height / 2; // Sinusoidal wave
+  
+    //   vertex(x, y);
+      
+    //   xoff += inc;
+    // }
+    // endShape();
+  
+    // start += inc;
+  
+    // noLoop(); // Stop looping
 }
 
