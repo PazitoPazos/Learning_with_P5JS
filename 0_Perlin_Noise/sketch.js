@@ -8,6 +8,11 @@
 // - Difference between random() and noise() -> random(min [optional], max) VS noise(smoothness)
 // -- https://www.youtube.com/watch?v=y7sgcFhk6ZM
 // - Graphing 1D Perlin Noise
+// -- https://www.youtube.com/watch?v=ikwNrFvnL3g
+// - 2D Noise
+// -- https://www.youtube.com/watch?v=D1BBj2VaBl4
+// - noiseDetail(smoothness, impact_over_last_value)
+
 
 // -- Variables --
 // var xoff = 0;
@@ -22,7 +27,7 @@ function setup() {
 
 function draw() {
 
-  // noiseDetail(smoothness, impact_over_last_value) // Controls the behaviour of Perlin Noise
+  // noiseDetail() -> Controls the behaviour of Perlin Noise
   noiseDetail(4, 0.5); // Default (I think)
 
   // --- 2D Noise ---
