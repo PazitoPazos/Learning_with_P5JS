@@ -22,6 +22,9 @@ function setup() {
 
 function draw() {
 
+  // noiseDetail(smoothness, impact_over_last_value) // Controls the behaviour of Perlin Noise
+  noiseDetail(4, 0.5); // Default (I think)
+
   // --- 2D Noise ---
   var yoff = 0;
 
